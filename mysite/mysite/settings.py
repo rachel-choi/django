@@ -121,16 +121,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
-# try:
-#     # Configure Django App for Heroku.
-#     import django_heroku
-#     django_heroku.settings(locals())
-# except ImportError:
-#     found = False
-
-ALLOWED_HOSTS = ['suggestion-app-0.herokuapp.com', 'localhost', '127.0.0.1']
-if '/app' in os.environ['HOME']:
+try:
+    # Configure Django App for Heroku.
     import django_heroku
     django_heroku.settings(locals())
+except ImportError:
+    found = False
+
+ALLOWED_HOSTS = ['suggestion-app-0.herokuapp.com', 'localhost', '127.0.0.1']
+# if '/app' in os.environ['HOME']:
+#     import django_heroku
+#     django_heroku.settings(locals())
